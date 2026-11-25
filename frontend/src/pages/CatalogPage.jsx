@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { api } from '../api/client';
 import { useToast } from '../context/ToastContext';
+import CategoryIcon from '../components/CategoryIcon';
 import CrudSection from '../components/CrudSection';
 import { SHIFTS } from '../utils/format';
 
@@ -56,10 +57,10 @@ export default function CatalogPage() {
           singular="categoría"
           description="Cada ubicación del mapa pertenece a una categoría (relación Location → Category)."
           endpoint="/categories"
-          emptyItem={{ name: '', icon: '🏥', color: '#e4572e', description: '' }}
+          emptyItem={{ name: '', icon: 'IconBuildingHospital', color: '#e4572e', description: '' }}
           fields={[
             { name: 'name', label: 'Nombre', required: true },
-            { name: 'icon', label: 'Ícono (emoji)', placeholder: '🏥' },
+            { name: 'icon', label: 'Ícono (clave Tabler)', placeholder: 'IconBuildingHospital' },
             { name: 'color', label: 'Color del marcador', type: 'color' },
             { name: 'description', label: 'Descripción', type: 'textarea', full: true },
           ]}
@@ -69,7 +70,7 @@ export default function CatalogPage() {
               render: (c) => (
                 <span className="inline-flex items-center gap-2 font-bold">
                   <span className="grid h-7 w-7 place-items-center rounded-full text-sm" style={{ background: c.color }}>
-                    {c.icon}
+                    <CategoryIcon name={c.icon} size={18} />
                   </span>
                   {c.name}
                 </span>

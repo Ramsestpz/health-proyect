@@ -1,11 +1,3 @@
-/**
- * Carga datos de prueba en MongoDB (usuario de prueba, catálogos, ubicaciones, médicos y zonas).
- *
- *   npm run seed            → solo carga si la base está vacía
- *   npm run seed -- --reset → BORRA todo y vuelve a cargar
- *
- * Los establecimientos son FICTICIOS, ubicados en colonias reales de León, Gto.
- */
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const connectDB = require('../config/db');
@@ -23,11 +15,11 @@ const TEST_USER = {
 };
 
 const categories = [
-  { name: 'Hospital', color: '#e4572e', icon: '🏥', description: 'Atención de urgencias, hospitalización y cirugía' },
-  { name: 'Farmacia', color: '#2bb39a', icon: '💊', description: 'Venta de medicamentos; algunas con consultorio anexo' },
-  { name: 'Laboratorio', color: '#5b6cff', icon: '🧪', description: 'Análisis clínicos y estudios de imagen' },
-  { name: 'Consultorio', color: '#f2a541', icon: '🩺', description: 'Consulta externa de medicina general o especialidad' },
-  { name: 'Centro de salud', color: '#8e5bd6', icon: '➕', description: 'Unidades públicas de primer nivel: vacunación y control' },
+  { name: 'Hospital', color: '#e4572e', icon: 'IconBuildingHospital', description: 'Atención de urgencias, hospitalización y cirugía' },
+  { name: 'Farmacia', color: '#2bb39a', icon: 'IconPill', description: 'Venta de medicamentos; algunas con consultorio anexo' },
+  { name: 'Laboratorio', color: '#5b6cff', icon: 'IconTestPipe', description: 'Análisis clínicos y estudios de imagen' },
+  { name: 'Consultorio', color: '#f2a541', icon: 'IconStethoscope', description: 'Consulta externa de medicina general o especialidad' },
+  { name: 'Centro de salud', color: '#8e5bd6', icon: 'IconMedicalCross', description: 'Unidades públicas de primer nivel: vacunación y control' },
 ];
 
 const specialties = [

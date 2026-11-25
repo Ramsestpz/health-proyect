@@ -1,4 +1,5 @@
 import L from 'leaflet';
+import { categoryIconMarkup } from './categoryIconRegistry';
 
 // Centro de León, Gto. (Leaflet usa [latitud, longitud])
 export const LEON_CENTER = [21.1236, -101.6806];
@@ -13,18 +14,19 @@ export const polygonToLatLngs = (geometry) => geometry.coordinates[0].map(toLatL
 
 const escapeHtml = (text) => String(text ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
 
-// Íconos en forma de pin con el color y emoji de la categoría (se cachean)
+// Íconos en forma de pin con el color e ícono de la categoría (se cachean)
 const cache = new Map();
 export function categoryIcon(category, { closed = false } = {}) {
   const color = category?.color || '#10243a';
-  const icon = category?.icon || '+';
-  const key = `${color}|${icon}|${closed}`;
+  const iconName = category?.icon || '+';
+  const key = `${color}|${iconName}|${closed}`;
   if (!cache.has(key)) {
+    const iconMarkup = categoryIconMarkup(iconName) || escapeHtml(iconName);
     cache.set(
       key,
       L.divIcon({
         className: '',
-        html: `<div class="pin ${closed ? 'pin-closed' : ''}" style="background:${escapeHtml(color)}"><span>${escapeHtml(icon)}</span></div>`,
+        html: `<div class="pin ${closed ? 'pin-closed' : ''}" style="background:${escapeHtml(color)}"><span style="color:#fff">${iconMarkup}</span></div>`,
         iconSize: [34, 34],
         iconAnchor: [17, 41],
         popupAnchor: [0, -38],

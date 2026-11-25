@@ -81,7 +81,7 @@ const categoryRules = (b) =>
     .required('name', 'El nombre').maxLength('name', 'El nombre', 60)
     .maxLength('description', 'La descripción', 300)
     .hexColor('color')
-    .maxLength('icon', 'El ícono', 4)
+    .maxLength('icon', 'El ícono', 64)
     .errors;
 
 const specialtyRules = (b) =>

@@ -5,6 +5,7 @@ import { useToast } from '../context/ToastContext';
 import { CategoryBadge, EmptyState, StatusBadge } from '../components/ui';
 import { LEON_CENTER, TILE_ATTRIBUTION, TILE_URL, rankIcon, toLatLng, youIcon } from '../utils/map';
 import { formatDistance } from '../utils/format';
+import { categoryOptionLabel } from '../utils/categoryIconRegistry';
 
 const RADII = [1000, 3000, 5000, 10000];
 
@@ -90,7 +91,7 @@ export default function NearbyPage() {
                 <option value="">Todos</option>
                 {categories.map((c) => (
                   <option key={c._id} value={c._id}>
-                    {c.icon} {c.name}
+                    {categoryOptionLabel(c.icon, c.name)}
                   </option>
                 ))}
               </select>

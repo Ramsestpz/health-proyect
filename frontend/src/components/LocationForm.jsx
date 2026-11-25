@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { STATUSES, formatCoord } from '../utils/format';
+import { categoryOptionLabel } from '../utils/categoryIconRegistry';
 
 const empty = { name: '', description: '', category: '', address: '', phone: '', status: 'Disponible', open24h: false };
 
@@ -62,7 +63,7 @@ export default function LocationForm({ initial, coordinates, categories, onSubmi
           <select className="input py-1.5" value={form.category} onChange={set('category')}>
             {categories.map((c) => (
               <option key={c._id} value={c._id}>
-                {c.icon} {c.name}
+                {categoryOptionLabel(c.icon, c.name)}
               </option>
             ))}
           </select>

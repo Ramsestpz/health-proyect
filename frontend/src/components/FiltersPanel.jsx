@@ -1,4 +1,5 @@
 import { STATUSES } from '../utils/format';
+import { categoryOptionLabel } from '../utils/categoryIconRegistry';
 
 // Búsqueda y filtros. Los valores viajan al backend como ?search=&category=&status=&zone=&open24h=
 export default function FiltersPanel({ filters, setFilters, categories, zones, total }) {
@@ -26,7 +27,7 @@ export default function FiltersPanel({ filters, setFilters, categories, zones, t
             <option value="">Todas</option>
             {categories.map((c) => (
               <option key={c._id} value={c._id}>
-                {c.icon} {c.name}
+                {categoryOptionLabel(c.icon, c.name)}
               </option>
             ))}
           </select>

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../api/client';
 import { useToast } from '../context/ToastContext';
 import useDebounce from '../hooks/useDebounce';
+import CategoryIcon from '../components/CategoryIcon';
 import HealthMap from '../components/HealthMap';
 import FiltersPanel from '../components/FiltersPanel';
 import ZonesPanel from '../components/ZonesPanel';
@@ -140,7 +141,7 @@ export default function MapPage() {
         <div className="flex flex-wrap gap-2 text-xs">
           {categories.map((c) => (
             <span key={c._id} className="inline-flex items-center gap-1.5 rounded-full bg-white px-2.5 py-1 font-semibold ring-1 ring-line">
-              <span>{c.icon}</span>
+              <CategoryIcon name={c.icon} size={18} />
               {c.name}
             </span>
           ))}
