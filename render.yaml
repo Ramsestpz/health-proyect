@@ -1,0 +1,20 @@
+# Blueprint de Render para la API (Dashboard > New > Blueprint, o úsalo como referencia)
+services:
+  - type: web
+    name: saludcerca-leon-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 8h
+      - key: CLIENT_URL
+        sync: false

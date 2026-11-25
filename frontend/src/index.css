@@ -1,0 +1,124 @@
+@import 'tailwindcss';
+@import 'leaflet/dist/leaflet.css';
+
+@theme {
+  --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Bricolage Grotesque', 'Manrope', ui-sans-serif, sans-serif;
+
+  --color-ink: #10243a;
+  --color-ink-soft: #2c4258;
+  --color-paper: #f6f3ee;
+  --color-card: #fffdf9;
+  --color-line: #e5ded2;
+  --color-coral: #e4572e;
+  --color-coral-dark: #c4421d;
+  --color-mint: #2bb39a;
+  --color-amber: #f2a541;
+  --color-muted: #6b7785;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Componentes reutilizables (utilidades propias de Tailwind v4) ---------- */@utility card {
+  @apply rounded-2xl border border-line bg-card shadow-[0_1px_0_rgba(16,36,58,0.04)];
+}
+@utility label {
+  @apply mb-1 block text-xs font-semibold tracking-wide text-ink-soft uppercase;
+}
+@utility input {
+  @apply w-full rounded-xl border border-line bg-white px-3 py-2 text-sm text-ink outline-none transition placeholder:text-muted/70 focus:border-ink focus:ring-2 focus:ring-ink/10;
+}
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50;
+}
+@utility btn-primary {
+  @apply btn bg-ink text-white hover:bg-ink-soft;
+}
+@utility btn-coral {
+  @apply btn bg-coral text-white hover:bg-coral-dark;
+}
+@utility btn-ghost {
+  @apply btn border border-line bg-white text-ink hover:border-ink;
+}
+@utility btn-danger {
+  @apply btn border border-coral/30 bg-coral/10 text-coral-dark hover:bg-coral hover:text-white;
+}
+@utility btn-sm {
+  @apply rounded-lg! px-2.5! py-1.5! text-xs!;
+}
+@utility th {
+  @apply sticky top-0 z-10 border-b border-line bg-paper px-3 py-2 text-left text-[11px] font-bold tracking-wider whitespace-nowrap text-ink-soft uppercase;
+}
+@utility td {
+  @apply border-b border-line/70 px-3 py-2 align-top text-sm;
+}
+
+/* ---------- Ajustes de Leaflet ---------- */
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: #e9e4da;
+}
+.leaflet-popup-content-wrapper {
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(16, 36, 58, 0.18);
+}
+.leaflet-popup-content {
+  margin: 14px 16px;
+  min-width: 250px;
+}
+.pin {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50% 50% 50% 4px;
+  transform: rotate(-45deg);
+  border: 3px solid #fff;
+  box-shadow: 0 4px 10px rgba(16, 36, 58, 0.35);
+}
+.pin span {
+  transform: rotate(45deg);
+  font-size: 15px;
+  line-height: 1;
+}
+.pin-draft {
+  background: var(--color-ink);
+  animation: pulse 1.2s ease-in-out infinite;
+}
+.pin-draft span {
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+}
+.pin-closed {
+  filter: grayscale(0.85);
+  opacity: 0.75;
+}
+@keyframes pulse {
+  50% {
+    transform: rotate(-45deg) scale(1.12);
+  }
+}
+.rank-pin {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 2px solid #fff;
+  color: #fff;
+  font-weight: 800;
+  font-size: 12px;
+  box-shadow: 0 3px 8px rgba(16, 36, 58, 0.35);
+}
