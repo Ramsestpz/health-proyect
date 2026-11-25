@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Circle, MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet';
+import { IconMapPin2 } from '@tabler/icons-react';
 import { api } from '../api/client';
 import { useToast } from '../context/ToastContext';
 import { CategoryBadge, EmptyState, StatusBadge } from '../components/ui';
@@ -70,7 +71,8 @@ export default function NearbyPage() {
         <aside className="space-y-5">
           <div className="card space-y-3 p-4">
             <button className="btn-primary w-full" onClick={useMyLocation}>
-              📍 Usar mi ubicación
+              <IconMapPin2 stroke={1} className='w-5 h-5'/>
+               Usar mi ubicación
             </button>
             <p className="text-center text-xs text-muted">o haz clic en cualquier punto del mapa</p>
             <div>
