@@ -1,4 +1,4 @@
-# SaludCerca León 🏥📍
+# SaludCerca León +
 
 Aplicación web geo-referenciada para **encontrar y mantener actualizado el mapa de establecimientos de salud de León, Guanajuato**: hospitales, farmacias, laboratorios, consultorios y centros de salud, con su estado (Disponible / Saturado / Cerrado), zonas de cobertura dibujadas sobre el mapa y búsqueda de la atención más cercana a un punto.
 
